@@ -12,39 +12,16 @@ public class PasswordValidatorShould
         sut = new();
     }
 
-    [Fact]
-    public void ReturnExpectedError_WhenPasswordIsNull()
+    [Theory]
+    [InlineData(null, "Password can not be null")]
+    [InlineData("", "Password can not be empty")]
+    [InlineData("short", "Password length can not be less than 8")]
+    [InlineData("password is valid", "")]
+
+    public void ReturnExpectedResultForGivenPassword(string? password, string expectedMessage)
     {
-        string? passwordNull = null;
-        var result = sut.Validate(passwordNull);
+        var result = sut.Validate(password);
 
-        result.Should().Be("Password can not be null");
-    }
-
-    [Fact]
-    public void ReturnExpectedError_WhenPasswordIsEmpty()
-    {
-        string? passwordEmpty = string.Empty;
-        var result = sut.Validate(passwordEmpty);
-
-        result.Should().Be("Password can not be empty");
-    }
-
-    [Fact]
-    public void ReturnExpectedError_WhenPasswordIsTooShort()
-    {
-        string? passwordShort = "short";
-        var result = sut.Validate(passwordShort);
-
-        result.Should().Be("Password length can not be less than 8");
-    }
-
-    [Fact]
-    public void NoReturnError_WhenPasswordMatchesAllRequirements()
-    {
-        string? passwordValid = "password is valid";
-        var result = sut.Validate(passwordValid);
-
-        result.Should().BeEmpty();
+        result.Should().Be(expectedMessage);
     }
 }
