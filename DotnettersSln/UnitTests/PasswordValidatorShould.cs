@@ -5,11 +5,16 @@ namespace UnitTests;
 
 public class PasswordValidatorShould
 {
+    private readonly PasswordValidator sut;
+
+    public PasswordValidatorShould()
+    {
+        sut = new();
+    }
+
     [Fact]
     public void ReturnExpectedError_WhenPasswordIsNull()
     {
-        var sut = new PasswordValidator();
-
         string? passwordNull = null;
         var result = sut.Validate(passwordNull);
 
@@ -19,8 +24,6 @@ public class PasswordValidatorShould
     [Fact]
     public void ReturnExpectedError_WhenPasswordIsEmpty()
     {
-        var sut = new PasswordValidator();
-
         string? passwordEmpty = string.Empty;
         var result = sut.Validate(passwordEmpty);
 
@@ -30,8 +33,6 @@ public class PasswordValidatorShould
     [Fact]
     public void ReturnExpectedError_WhenPasswordIsTooShort()
     {
-        var sut = new PasswordValidator();
-
         string? passwordShort = "short";
         var result = sut.Validate(passwordShort);
 
@@ -41,8 +42,6 @@ public class PasswordValidatorShould
     [Fact]
     public void NoReturnError_WhenPasswordMatchesAllRequirements()
     {
-        var sut = new PasswordValidator();
-
         string? passwordValid = "password is valid";
         var result = sut.Validate(passwordValid);
 
