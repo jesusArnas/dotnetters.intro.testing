@@ -6,7 +6,7 @@ namespace WebApp.Database;
 
 public class UsersContext : DbContext
 {
-    public DbSet<UserEntity> Users { get; set; }
+    public virtual DbSet<UserEntity> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
         => options

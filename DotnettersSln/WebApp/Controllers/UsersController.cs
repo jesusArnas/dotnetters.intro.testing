@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Database;
 using WebApp.Features;
-using WebApp.Models;
-using WebApp.PasswordValidator;
-using WebApp.Repository;
 
 namespace WebApp.Controllers;
 
