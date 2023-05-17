@@ -1,6 +1,9 @@
 using FluentAssertions;
 using FunctionalTests.Fixtures;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System.Net;
+using WebApp.Database;
 
 namespace FunctionalTests;
 
@@ -32,13 +35,22 @@ public class CreateUserShould : IAsyncLifetime
 
         response.StatusCode.Should()
             .Be(HttpStatusCode.OK);
+
+        using var scope = _fixture.Services.CreateScope();
+        var dbContext = scope.ServiceProvider.GetRequiredService<UsersContext>();
+
+        var existingUser = await dbContext
+            .Users
+            .Where(user => user.Name == "testuser")
+            .SingleAsync();
+        existingUser.Should().NotBeNull();
     }
 
     static class Api
     {
         public static class Post
         {
-            public static string CreateUser => "users?name=b&password=passwordlargo";
+            public static string CreateUser => "users?name=testuser&password=passwordlargo";
         }
     }
 }

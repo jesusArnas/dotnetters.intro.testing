@@ -10,7 +10,7 @@ public class UsersContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
         => options
-        .UseNpgsql("Host=localhost;Database=dotnetters;Username=postgres;Password=XXXX")
+        .UseNpgsql("Host=localhost;Database=dotnetters;Username=postgres;Password=patata123")
         .UseSnakeCaseNamingConvention();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

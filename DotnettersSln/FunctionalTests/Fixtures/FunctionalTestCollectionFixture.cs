@@ -17,7 +17,7 @@ public class FunctionalTestCollectionFixture : WebApplicationFactory<Program>
 
     public async Task ResetDbAsync()
     {
-        var connectionString = "Host=localhost;Database=dotnetters;Username=postgres;Password=XXX";
+        var connectionString = "Host=localhost;Database=dotnetters;Username=postgres;Password=patata123";
         await using var connection = new NpgsqlConnection(connectionString);
         await connection.OpenAsync();
         await _checkpoint.Reset(connection);
