@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Database;
+using WebApp.Features;
 using WebApp.Models;
 using WebApp.PasswordValidator;
 using WebApp.Repository;
@@ -20,18 +21,14 @@ public class UsersController : ControllerBase
     [HttpPost(Name = "CreateUser")]
     public async Task<IActionResult> Create(string name, string password)
     {
-        var user = new User(name, password);
+        var createUser = new CreateUser(_usersContext);
 
-        var passwordValidator = new PasswordValidatorImpl();
-        var result = passwordValidator.Validate(user);
+        var result = await createUser.Execute(name, password);
 
-        if (!string.IsNullOrEmpty(result))
+        if (!result.Item1)
         {
             return BadRequest();
         }
-
-        var userRepository = new UserRepository(_usersContext);
-        await userRepository.Save(user);
 
         return Ok();
     }
