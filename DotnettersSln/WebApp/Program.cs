@@ -1,3 +1,4 @@
+using System.Security;
 using WebApp.Database;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,3 +29,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }
