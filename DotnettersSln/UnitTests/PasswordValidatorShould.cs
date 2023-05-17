@@ -6,7 +6,7 @@ namespace UnitTests;
 
 public class PasswordValidatorShould
 {
-    private readonly PasswordValidator sut;
+    private readonly PasswordValidatorImpl sut;
 
     public PasswordValidatorShould()
     {

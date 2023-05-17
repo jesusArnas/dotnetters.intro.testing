@@ -2,7 +2,7 @@
 
 namespace WebApp.PasswordValidator;
 
-public class PasswordValidator
+public class PasswordValidatorImpl
 {
     public string Validate(User user)
     {
