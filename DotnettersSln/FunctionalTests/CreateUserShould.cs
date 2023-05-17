@@ -5,13 +5,23 @@ using System.Net;
 namespace FunctionalTests;
 
 [Collection(nameof(FunctionalTestCollection))]
-public class CreateUserShould
+public class CreateUserShould : IAsyncLifetime
 {
     private readonly FunctionalTestCollectionFixture _fixture;
 
     public CreateUserShould(FunctionalTestCollectionFixture fixture)
     {
         _fixture = fixture;
+    }
+
+    public async Task InitializeAsync()
+    {
+        await _fixture.ResetDbAsync();
+    }
+
+    public Task DisposeAsync()
+    {
+        return Task.CompletedTask;
     }
 
     [Fact]
