@@ -12,6 +12,8 @@ The main ideas behind this talk are:
 Some links with relevant ideas that were used to prepare the talk:
 - https://github.com/Xabaril/ManualEffectiveTestingHttpAPI
 
+- https://www.youtube.com/watch?v=sMdrbIbGwFo Test parametrizados en xUnit con InlineData, ClassData, MemberData 
+
 - https://twitter.com/gregor_riegler/status/1659921279481180162 "A unit is a portion of a system that you can exercise and understand with tests, with minimal setup or complication"
 
 - https://www.youtube.com/watch?v=TNuyxB2gvng 3 + 1 herramientas de testing en .NET | CodelyTv #laFunción8x29 
